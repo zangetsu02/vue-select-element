@@ -1,5 +1,7 @@
 <template>
-    <label>Combobox</label>
+    <label>
+        <slot></slot>
+    </label>
 </template>
 
 <script setup lang="ts">

@@ -1,5 +1,9 @@
 <template>
-    <SelectLabel/>
+
+    <SelectLabel v-show="label">
+        {{ label }}
+    </SelectLabel>
+
     <div
         class="select-wrapper bg-white border-radius-sm"
         @click="openMenu"
@@ -22,6 +26,10 @@ import {ref} from "vue";
 import SelectInput from "./children/SelectInput.vue";
 import SelectButton from "./children/SelectButton.vue";
 import SelectLabel from "./children/SelectLabel.vue";
+
+const props = defineProps<{
+    label?: string
+}>()
 
 const isOpen = ref<Boolean>(false)
 
