@@ -7,7 +7,6 @@
     <div
         class="select-wrapper bg-white border-radius-sm box-shadow"
         @click="openMenu"
-        @focusout="openMenu"
     >
         <div class="select-search d-flex">
             <SelectInput/>
