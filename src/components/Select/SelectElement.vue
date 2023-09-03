@@ -43,16 +43,4 @@ function openMenu(): void {
     border: 1px solid var(--light-gray);
 }
 
-.select-input {
-    width: 100%;
-    padding: 0.5rem 2.5rem 0.5rem 0.75rem;
-    font-size: .875rem;
-    line-height: 1.25rem;
-}
-
-
-button {
-    padding-right: 0.5rem;
-}
-
 </style>
