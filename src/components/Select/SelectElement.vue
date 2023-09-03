@@ -1,6 +1,6 @@
 <template>
 
-    <SelectLabel v-show="label">
+    <SelectLabel v-if="label">
         {{ label }}
     </SelectLabel>
 
