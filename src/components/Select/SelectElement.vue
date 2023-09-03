@@ -19,10 +19,16 @@
 
     <SelectOptions v-if="isOpen" class="bg-white border-radius-sm default-border box-shadow" :options="options">
         <li
+            v-if="computedOptions.length !== 0"
             v-for="option in computedOptions" :key="option.value"
+            :class="{'selected': option.selected}"
             @click="handleOnChange(option)"
         >
             {{ option.label }}
+        </li>
+
+        <li v-else>
+            Nothing found.
         </li>
     </SelectOptions>
 
