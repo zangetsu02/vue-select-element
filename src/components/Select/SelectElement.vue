@@ -20,7 +20,7 @@ import {ref} from "vue";
 
 const isOpen = ref<Boolean>(false)
 
-function openMenu() {
+function openMenu(): void {
     isOpen.value = !isOpen.value
 }
 
