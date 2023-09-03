@@ -14,7 +14,13 @@
         </div>
     </div>
 
-    <div v-show="isOpen">
+    <SelectOptions v-if="isOpen" class="bg-white border-radius-sm default-border box-shadow" :options="options">
+        <li
+            v-for="option in options" :key="option.value"
+        >
+            {{ option.label }}
+        </li>
+    </SelectOptions>
 
     </div>
 
@@ -26,8 +32,16 @@ import {ref} from "vue";
 import SelectInput from "./children/SelectInput.vue";
 import SelectButton from "./children/SelectButton.vue";
 import SelectLabel from "./children/SelectLabel.vue";
+import SelectOptions from "./children/SelectOptions.vue";
+
+interface SelectOption {
+    label: string,
+    value: string | number,
+    disabled?: boolean
+}
 
 const props = defineProps<{
+    options: SelectOption[],
     label?: string
 }>()
 
