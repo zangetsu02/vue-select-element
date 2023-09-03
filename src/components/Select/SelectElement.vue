@@ -11,7 +11,7 @@
         <div class="select-search d-flex">
             <SelectInput
                 v-model="query"
-                :displayValue="modelValue"
+                :displayValue="modelValue.label"
             />
             <SelectButton/>
         </div>
@@ -31,7 +31,7 @@
 
 <script setup lang="ts">
 import './style/SearchElementStyle.css'
-import {computed, ref} from "vue";
+import {computed, reactive, ref} from "vue";
 import SelectInput from "./children/SelectInput.vue";
 import SelectButton from "./children/SelectButton.vue";
 import SelectLabel from "./children/SelectLabel.vue";
@@ -40,8 +40,11 @@ import SelectOptions from "./children/SelectOptions.vue";
 interface SelectOption {
     label: string,
     value: string | number,
+    selected: boolean
     disabled?: boolean
 }
+
+const emit = defineEmits(['change'])
 
 const props = defineProps<{
     options: SelectOption[],
@@ -50,7 +53,11 @@ const props = defineProps<{
 
 const isOpen = ref<Boolean>(false)
 const query = ref<string>('')
-const modelValue = ref<string>('')
+
+const modelValue = reactive({
+    label: '',
+    value: null,
+})
 
 const computedOptions =  computed(() => {
     if (query.value === '') {
@@ -67,7 +74,11 @@ function openMenu(): void {
 }
 
 function handleOnChange(option: SelectOption): void {
-    modelValue.value = option.label
+    props.options.map(option => option.selected = false)
+    option.selected = true
+    modelValue.label = option.label
+    modelValue.value = option.value
+    emit('change', modelValue.value)
     openMenu()
 }
 
@@ -82,6 +93,11 @@ function handleOnChange(option: SelectOption): void {
     cursor: default;
     overflow: hidden;
     border: 1px solid var(--light-gray);
+}
+
+.selected {
+    background: var(--tw-gradient-to);
+    color: var(--background-white);
 }
 
 </style>
