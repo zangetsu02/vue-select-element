@@ -5,8 +5,9 @@
     </SelectLabel>
 
     <div
-        class="select-wrapper bg-white border-radius-sm"
+        class="select-wrapper bg-white border-radius-sm box-shadow"
         @click="openMenu"
+        @focusout="openMenu"
     >
         <div class="select-search d-flex">
             <SelectInput/>
@@ -22,7 +23,6 @@
         </li>
     </SelectOptions>
 
-    </div>
 
 </template>
 
@@ -61,7 +61,6 @@ function openMenu(): void {
     text-align: left;
     cursor: default;
     overflow: hidden;
-    box-shadow: 0 0 transparent  ,0 0 transparent,  0 4px 6px -1px rgb(0 0 0/0.1),0 2px 4px -2px rgb(0 0 0/0.1);
     border: 1px solid var(--light-gray);
 }
 
