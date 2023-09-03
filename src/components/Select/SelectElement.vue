@@ -37,7 +37,7 @@
 
 <script setup lang="ts">
 import './style/SearchElementStyle.css'
-import {computed, reactive, ref} from "vue";
+import {computed, onMounted, reactive, ref} from "vue";
 import SelectInput from "./children/SelectInput.vue";
 import SelectButton from "./children/SelectButton.vue";
 import SelectLabel from "./children/SelectLabel.vue";
@@ -49,6 +49,10 @@ interface SelectOption {
     selected: boolean
     disabled?: boolean
 }
+
+onMounted(() => {
+    modelValue.label = props.options.find(option => option.selected) ? props.options.find(option => option.selected)?.label! : ''
+})
 
 const emit = defineEmits(['change'])
 
