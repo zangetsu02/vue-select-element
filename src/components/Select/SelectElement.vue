@@ -29,29 +29,21 @@ function openMenu() {
 <style scoped>
 
 .select-wrapper {
-    box-shadow: 0 0 transparent  ,0 0 transparent,  0 4px 6px -1px rgb(0 0 0/0.1),0 2px 4px -2px rgb(0 0 0/0.1);
     width: 100%;
-    overflow: hidden;
-    cursor: default;
     position: relative;
     text-align: left;
+    cursor: default;
+    overflow: hidden;
+    box-shadow: 0 0 transparent  ,0 0 transparent,  0 4px 6px -1px rgb(0 0 0/0.1),0 2px 4px -2px rgb(0 0 0/0.1);
 }
 
 .select-input {
     width: 100%;
-    outline: none;
     padding: 0.5rem 2.5rem 0.5rem 0.75rem;
     font-size: .875rem;
     line-height: 1.25rem;
-    appearance: none;
-    border-radius: 0;
 }
 
-svg {
-    width: 1.25rem;
-    height: 1.25rem;
-    color: #9CA3AF;
-}
 
 button {
     padding-right: 0.5rem;
