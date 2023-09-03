@@ -9,14 +9,18 @@
         @click="openMenu"
     >
         <div class="select-search d-flex">
-            <SelectInput/>
+            <SelectInput
+                v-model="query"
+                :displayValue="modelValue"
+            />
             <SelectButton/>
         </div>
     </div>
 
     <SelectOptions v-if="isOpen" class="bg-white border-radius-sm default-border box-shadow" :options="options">
         <li
-            v-for="option in options" :key="option.value"
+            v-for="option in computedOptions" :key="option.value"
+            @click="handleOnChange(option)"
         >
             {{ option.label }}
         </li>
@@ -27,7 +31,7 @@
 
 <script setup lang="ts">
 import './style/SearchElementStyle.css'
-import {ref} from "vue";
+import {computed, ref} from "vue";
 import SelectInput from "./children/SelectInput.vue";
 import SelectButton from "./children/SelectButton.vue";
 import SelectLabel from "./children/SelectLabel.vue";
@@ -45,9 +49,26 @@ const props = defineProps<{
 }>()
 
 const isOpen = ref<Boolean>(false)
+const query = ref<string>('')
+const modelValue = ref<string>('')
+
+const computedOptions =  computed(() => {
+    if (query.value === '') {
+        return props.options
+    }
+
+    return props.options.filter((option: SelectOption) => {
+        return option.label.toLowerCase().includes(query.value.toLowerCase())
+    })
+})
 
 function openMenu(): void {
     isOpen.value = !isOpen.value
+}
+
+function handleOnChange(option: SelectOption): void {
+    modelValue.value = option.label
+    openMenu()
 }
 
 </script>
