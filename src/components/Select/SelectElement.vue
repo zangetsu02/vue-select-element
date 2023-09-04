@@ -6,13 +6,11 @@
 
     <div
         class="select-wrapper bg-white border-radius-sm box-shadow"
+        tabindex="0"
         @click="openMenu"
     >
         <div class="select-search d-flex">
-            <SelectInput
-                v-model="query"
-                :displayValue="modelValue.label"
-            />
+            <SelectInput v-model="query" :displayValue="modelValue.label"/>
             <SelectButton/>
         </div>
     </div>
@@ -37,7 +35,7 @@
 
 <script setup lang="ts">
 import './style/SearchElementStyle.css'
-import {computed, onMounted, reactive, ref} from "vue";
+import {computed, ref} from "vue";
 import SelectInput from "./children/SelectInput.vue";
 import SelectButton from "./children/SelectButton.vue";
 import SelectLabel from "./children/SelectLabel.vue";
@@ -50,46 +48,28 @@ interface SelectOption {
     disabled?: boolean
 }
 
-onMounted(() => {
-    modelValue.label = props.options.find(option => option.selected) ? props.options.find(option => option.selected)?.label! : ''
-})
-
-const emit = defineEmits(['change'])
+const vModel = defineModel<SelectOption>()
 
 const props = defineProps<{
     options: SelectOption[],
     label?: string
+    name?: string
+    disabled?: boolean
 }>()
 
 const isOpen = ref<Boolean>(false)
 const query = ref<string>('')
 
-const modelValue = reactive({
-    label: '',
-    value: null,
-})
-
-const computedOptions =  computed(() => {
-    if (query.value === '') {
-        return props.options
-    }
-
-    return props.options.filter((option: SelectOption) => {
-        return option.label.toLowerCase().includes(query.value.toLowerCase())
-    })
-})
+const computedOptions =  computed(() =>
+    query.value === ''
+        ? props.options
+        : props.options.filter((option) => {
+            return option.label.toLowerCase().includes(query.value.toLowerCase())
+        })
+)
 
 function openMenu(): void {
     isOpen.value = !isOpen.value
-}
-
-function handleOnChange(option: SelectOption): void {
-    props.options.map(option => option.selected = false)
-    option.selected = true
-    modelValue.label = option.label
-    modelValue.value = option.value
-    emit('change', modelValue.value)
-    openMenu()
 }
 
 </script>
