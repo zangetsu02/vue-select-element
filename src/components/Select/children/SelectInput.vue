@@ -3,6 +3,8 @@
         class="select-input bg-white default-border"
         type="text"
         v-model="modelValue"
+        @keyup.enter="emit('enter', modelValue)"
+        @input="emit('isWriting')"
     >
 </template>
 
@@ -10,18 +12,13 @@
 
 import {computed, watch} from "vue";
 
-const props = defineProps<{
-    displayValue: string
+const emit = defineEmits<{
+    enter: [value: string | undefined]
 }>()
 
-const modelValue = defineModel<string>()
-const displayValue = computed(() => {
-    return props.displayValue
-})
 
-watch(displayValue, () => {
-    modelValue.value = props.displayValue
-})
+const modelValue = defineModel<string>()
+
 </script>
 
 <style scoped>
