@@ -23,37 +23,47 @@ const setMode = (value: boolean) => {
 
 </template>
 
-<style scoped>
+<style>
 @font-face {
-    font-family: myFirstFont;
+    font-family: "myFirstFont";
     src: url(Inter-VariableFont_slnt,wght.ttf);
 }
 
 :root {
     --background: #fff;
     --color: #09090b;
+    --border: #e4e4e7;
+    --hover-color: #18181b;
+    --hover-background: #f4f4f5;
 }
 
 .dark {
     --background: #09090b;
     --color: #fafafa;
+    --hover-color: #fafafa;
+    --hover-background: #27272a;
+    --border: #27272a;
 }
 
 .switch-mode {
     position: absolute;
     top: 0;
     right: 0;
-    padding: 15px;
     cursor: pointer;
     user-select: none;
 }
 
+.switch-mode > div {
+    padding: 15px;
+}
+
 .content {
+    font-family: "myFirstFont",serif !important;
     width: 100%;
     height: 100%;
     background-color: var(--background);
     color: var(--color);
-    transition: 0.4s ease;
+    transition: all cubic-bezier(.4,0,.2,1) .25s;
 }
 
 .content-body {
@@ -61,6 +71,43 @@ const setMode = (value: boolean) => {
     height: 100%;
     width: 100%;
     justify-content: center;
-    align-content: center;
+    align-items: center;
+}
+
+.combobox-button {
+    padding: 0.5rem 1rem;
+    min-width: 200px;
+    min-height: 40px;
+    font-weight: 500;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    border: 1px var(--border) solid;
+    border-radius: calc(0.5rem - 2px);
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 2.5rem;
+    font-family: inherit;
+    -webkit-appearance: button;
+    background-color: transparent;
+    background-image: none;
+    color: inherit;
+    cursor: pointer;
+    text-transform: none;
+    transition-property: border,text-decoration-color,fill,stroke;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    transition-duration: .25s;
+}
+
+.combobox-button:hover {
+    background-color: var(--hover-background);
+    color: var(--hover-color);
+}
+
+svg {
+    vertical-align: middle;
+    width: 1rem;
+    height: 1rem;
+    margin-left: 0.5rem;
 }
 </style>
