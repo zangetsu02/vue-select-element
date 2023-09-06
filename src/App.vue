@@ -1,41 +1,26 @@
 <script setup lang="ts">
-
-import SelectElement from "./components/Select/SelectElement.vue";
 import {ref} from "vue";
+import BaseCombobox from "./components/Combobox/BaseCombobox.vue";
 
-const options = [
-    {
-        label: 'Wade Cooper',
-        value: 1,
-        selected: false
-    },
-    {
-        label: 'Arlene Mccoy',
-        value: 2,
-        selected: true
-    },
-    {
-        label: 'Tom Cook',
-        value: 3,
-        selected: false
-    },
-    {
-        label: 'Hellen Schmidt',
-        value: 1,
-        selected: false
-    },
-]
+const isDark = ref(true)
 
-const result = ref()
+const setMode = (value: boolean) => {
+    isDark.value = value
+}
 </script>
 
 <template>
-    <div class="content">
+    <div class="content" :class="{dark: isDark}">
+        <div class="switch-mode">
+            <div v-if="isDark" @click="setMode(false)">🌙</div>
+            <div v-else @click="setMode(true)">☀️</div>
+        </div>
 
-        {{ result }}
-
-        <SelectElement label="Combobox" :options="options" @change="(value) => result = value"/>
+        <div class="content-body">
+            <BaseCombobox on-click-outside=""/>
+        </div>
     </div>
+
 </template>
 
 <style scoped>
@@ -43,14 +28,39 @@ const result = ref()
     font-family: myFirstFont;
     src: url(Inter-VariableFont_slnt,wght.ttf);
 }
-.content {
-    font-family: myFirstFont;
-    height: 100%;
-    padding: 10rem 5rem;
-    --tw-gradient-from: #2dd4bf;
-    --tw-gradient-to: #22d3ee;;
-    --tw-gradient-stops: var(--tw-gradient-from),var(--tw-gradient-to);
-    background-image: linear-gradient(to right,var(--tw-gradient-stops));
+
+:root {
+    --background: #fff;
+    --color: #09090b;
 }
 
+.dark {
+    --background: #09090b;
+    --color: #fafafa;
+}
+
+.switch-mode {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 15px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+    background-color: var(--background);
+    color: var(--color);
+    transition: 0.4s ease;
+}
+
+.content-body {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+}
 </style>
