@@ -17,7 +17,7 @@ const setMode = (value: boolean) => {
         </div>
 
         <div class="content-body">
-            <BaseCombobox on-click-outside=""/>
+            <BaseCombobox on-click-outside="" placeholder="Select framework..."/>
         </div>
     </div>
 
