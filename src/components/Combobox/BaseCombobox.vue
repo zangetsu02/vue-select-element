@@ -1,7 +1,8 @@
 <template>
 <div class="combobox" v-on-click-outside="onClickOutside">
     <slot>
-        <ComboboxButton :placeholder="placeholder"/>
+        <ComboboxButton :placeholder="placeholderButton"/>
+        <ComboboxList :placeholder="placeholderSearch"/>
     </slot> 
 </div>
 
@@ -12,7 +13,8 @@ import vOnClickOutside from "../../utils/utils.ts";
 import ComboboxButton from "./Children/ComboboxButton.vue";
 
 const props = defineProps<{
-    placeholder: string
+    placeholderButton: string
+    placeholderSearch: string
     onClickOutside: Function
 }>()
 </script>
