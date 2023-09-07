@@ -2,9 +2,11 @@
 <div class="combobox" ref="combobox" v-on-click-outside="closeOptionsMenu">
     <slot>
         <ComboboxButton @click="showOptions" :placeholder="placeholderButton"/>
-        <ComboboxList v-if="show" :placeholder="placeholderSearch" :options="options"
-
-        :style="{top: topX, right: rightX}"
+        <ComboboxList
+            v-if="show"
+            :placeholder="placeholderSearch"
+            :options="options"
+            :style="{top: topX, right: rightX}"
         />
     </slot> 
 </div>
