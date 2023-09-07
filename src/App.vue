@@ -7,6 +7,28 @@ const isDark = ref(true)
 const setMode = (value: boolean) => {
     isDark.value = value
 }
+const frameworks = [
+    {
+        value: "next.js",
+        label: "Next.js",
+    },
+    {
+        value: "sveltekit",
+        label: "SvelteKit",
+    },
+    {
+        value: "nuxt.js",
+        label: "Nuxt.js",
+    },
+    {
+        value: "remix",
+        label: "Remix",
+    },
+    {
+        value: "astro",
+        label: "Astro",
+    },
+]
 </script>
 
 <template>
@@ -21,6 +43,7 @@ const setMode = (value: boolean) => {
                 on-click-outside=""
                 placeholderButton="Select framework..."
                 placeholderSearch="Search framework..."
+                :options="frameworks"
             />
         </div>
     </div>
@@ -144,12 +167,36 @@ const setMode = (value: boolean) => {
     background-color: transparent;
     border: none;
 }
-
+.combobox-options .combobox-options-item svg,
 .combobox-search svg {
+    opacity: 1;
     vertical-align: middle;
     width: 1rem;
     height: 1rem;
     margin-right: 0.5rem;
+}
+
+.combobox-options {
+    padding: 0.25rem;
+    overflow: hidden;
+}
+
+.combobox-options .combobox-options-item {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    padding: 0.375rem 0.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius: calc(0.5rem - 4px);
+    user-select: none;
+}
+
+.combobox-options .combobox-options-item:hover {
+    background-color: var(--hover-background);
+    color: var(--hover-color)
 }
 
 .combobox-button:hover {
