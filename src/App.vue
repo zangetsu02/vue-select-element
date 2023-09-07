@@ -68,7 +68,7 @@ const frameworks = [
     --background: #09090b;
     --color: #fafafa;
     --hover-color: #fafafa;
-    --hover-background: #27272a;
+    --hover-background: #18181b;
     --border: #27272a;
 }
 
