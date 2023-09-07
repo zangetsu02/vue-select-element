@@ -10,16 +10,34 @@
             aria-autocomplete="list"
             aria-expanded="true"
             :placeholder="placeholder"
-            value
+            v-model="searchValue"
         >
     </div>
 </template>
 
 <script setup lang="ts">
 
+import {computed} from "vue";
+
+const emit = defineEmits<{
+    (e: 'change', value: string): void
+    (e: 'update:modelValue', value: string): void
+}>()
+
 const props = defineProps<{
     placeholder: string
+    modelValue: string
 }>()
+
+const searchValue = computed({
+    get() {
+        return props.modelValue
+    },
+    set(newValue) {
+        emit('change', newValue)
+        emit('update:modelValue', newValue)
+    }
+})
 </script>
 
 <style scoped>
