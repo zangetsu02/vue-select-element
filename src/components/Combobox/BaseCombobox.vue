@@ -11,6 +11,7 @@
 <script setup lang="ts">
 import vOnClickOutside from "../../utils/utils.ts";
 import ComboboxButton from "./Children/ComboboxButton.vue";
+import ComboboxList from "./Children/ComboboxList.vue";
 
 const props = defineProps<{
     placeholderButton: string
