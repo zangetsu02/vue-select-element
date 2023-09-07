@@ -17,7 +17,11 @@ const setMode = (value: boolean) => {
         </div>
 
         <div class="content-body">
-            <BaseCombobox on-click-outside="" placeholder="Select framework..."/>
+            <BaseCombobox
+                on-click-outside=""
+                placeholderButton="Select framework..."
+                placeholderSearch="Search framework..."
+            />
         </div>
     </div>
 
@@ -99,12 +103,61 @@ const setMode = (value: boolean) => {
     transition-duration: .25s;
 }
 
+.combobox-list-container {
+    width: 200px;
+    border: 1px var(--border) solid;
+    border-radius: calc(0.5rem - 2px);
+    background-color: transparent;
+    color: inherit;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    z-index: 50;
+}
+
+.combobox-list-content {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.combobox-search {
+    padding: 0 0.75rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+}
+
+.combobox-search input {
+    color: inherit;
+    margin: 0;
+    font-family: inherit;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    padding: 0.75rem 0;
+    width: 100%;
+    display: flex;
+    background-color: transparent;
+    border: none;
+}
+
+.combobox-search svg {
+    vertical-align: middle;
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.5rem;
+}
+
 .combobox-button:hover {
     background-color: var(--hover-background);
     color: var(--hover-color);
 }
 
-svg {
+.combobox-button svg {
     vertical-align: middle;
     width: 1rem;
     height: 1rem;
