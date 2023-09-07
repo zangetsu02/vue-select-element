@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+index.html
+/src/main.ts
+/src/App.vue
+/src/Inter-VariableFont_slnt,wght.ttf
