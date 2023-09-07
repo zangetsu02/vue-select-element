@@ -176,6 +176,10 @@ const frameworks = [
     margin-right: 0.5rem;
 }
 
+.combobox-options .combobox-options-item svg {
+    opacity: 0;
+}
+
 .combobox-options {
     padding: 0.25rem;
     overflow: hidden;
