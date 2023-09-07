@@ -28,10 +28,12 @@ const props = defineProps<{
 
 onMounted(() => {
     window.addEventListener('resize', calulatePositon)
+    window.addEventListener('scroll', calulatePositon)
 })
 
 onUnmounted(() => {
     window.removeEventListener('resize', calulatePositon)
+    window.removeEventListener('scroll', calulatePositon)
 })
 
 const topX = ref()
