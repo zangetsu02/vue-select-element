@@ -41,7 +41,8 @@ const rightX = ref()
 
 const show = ref(false)
 const combobox = ref()
-const showOptions = (event: Event) => {
+
+const showOptions = () => {
 
     if (!show.value) {
         calculatePosition()
