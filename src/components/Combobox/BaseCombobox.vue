@@ -24,7 +24,6 @@ const props = defineProps<{
     placeholderButton: string
     placeholderSearch: string
     options: ComboboxOption[]
-    onClickOutside: Function
 }>()
 
 onMounted(() => {

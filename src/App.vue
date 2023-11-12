@@ -40,7 +40,6 @@ const frameworks = [
 
         <div class="content-body">
             <BaseCombobox
-                on-click-outside=""
                 placeholderButton="Select framework..."
                 placeholderSearch="Search framework..."
                 :options="frameworks"
