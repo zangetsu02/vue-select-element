@@ -18,11 +18,12 @@ import vOnClickOutside from "../../utils/utils.ts";
 import ComboboxButton from "./Children/ComboboxButton.vue";
 import ComboboxList from "./Children/ComboboxList.vue";
 import {onMounted, onUnmounted, ref} from "vue";
+import {ComboboxOption} from "./ComboboxInterfaces.ts";
 
 const props = defineProps<{
     placeholderButton: string
     placeholderSearch: string
-    options: object[]
+    options: ComboboxOption[]
     onClickOutside: Function
 }>()
 

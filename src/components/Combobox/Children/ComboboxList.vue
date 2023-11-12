@@ -16,10 +16,11 @@
 import ComboboxSearch from "./ComboboxSearch.vue";
 import ComboboxOptions from "./ComboboxOptions.vue";
 import {computed, ref} from "vue";
+import {ComboboxOption} from "../ComboboxInterfaces.ts";
 
 const props = defineProps<{
     placeholder: string
-    options: object[]
+    options: ComboboxOption[]
 }>()
 
 const searchValue = ref<string>('')

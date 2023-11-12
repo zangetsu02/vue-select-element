@@ -10,9 +10,10 @@
 </template>
 
 <script setup lang="ts">
+import {ComboboxOption} from "../ComboboxInterfaces.ts";
 
 const props = defineProps<{
-    options: object[]
+    options: ComboboxOption[]
 }>()
 
 </script>
