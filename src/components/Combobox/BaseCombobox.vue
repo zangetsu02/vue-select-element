@@ -27,13 +27,13 @@ const props = defineProps<{
 }>()
 
 onMounted(() => {
-    window.addEventListener('resize', calulatePositon)
-    window.addEventListener('scroll', calulatePositon)
+    window.addEventListener('resize', calculatePosition)
+    window.addEventListener('scroll', calculatePosition)
 })
 
 onUnmounted(() => {
-    window.removeEventListener('resize', calulatePositon)
-    window.removeEventListener('scroll', calulatePositon)
+    window.removeEventListener('resize', calculatePosition)
+    window.removeEventListener('scroll', calculatePosition)
 })
 
 const topX = ref()
@@ -44,7 +44,7 @@ const combobox = ref()
 const showOptions = (event: Event) => {
 
     if (!show.value) {
-        calulatePositon()
+        calculatePosition()
         show.value = true
         return
     }
@@ -56,7 +56,7 @@ const closeOptionsMenu = () => {
     show.value = false
 }
 
-const calulatePositon = () => {
+const calculatePosition = () => {
     const {top, right, width, height} = combobox.value.getBoundingClientRect()
     topX.value = `${top + height + 8}px`
     rightX.value = `${right - width}px`
