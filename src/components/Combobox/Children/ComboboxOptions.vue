@@ -21,7 +21,7 @@
 import {ComboboxOption} from "../ComboboxInterfaces.ts";
 
 defineEmits<{
-    ComboboxOptionClickEmit: [index: number]
+    (e: 'ComboboxOptionClickEmit', index: number): void
 }>()
 
 defineProps<{
