@@ -5,7 +5,7 @@
                 <slot>
                     <ComboboxSearch :placeholder="placeholder" v-model="searchValue"/>
 
-                    <ComboboxOptions :options="computedOptions"/>
+                    <ComboboxOptions @ComboboxOptionClickEmit="(index: number) => handleOnClickEvent(index) " :options="computedOptions"/>
                 </slot>
             </div>
         </div>
@@ -23,14 +23,25 @@ const props = defineProps<{
     options: ComboboxOption[]
 }>()
 
+const options = ref<ComboboxOption[]>(props.options)
 const searchValue = ref<string>('')
 
 const computedOptions = computed(() => {
     return searchValue.value === ''
-        ? props.options
-        : props.options.filter((option) => option.label.toLowerCase().includes(searchValue.value.toLowerCase()))
+        ? options.value
+        : options.value.filter((option) => option.label.toLowerCase().includes(searchValue.value.toLowerCase()))
 
 })
+
+function handleOnClickEvent(index: number) {
+    for (let i = 0; i < options.value.length; i++) {
+        if (i === index) {
+            options.value[index].selected = !options.value[index].selected
+            return
+        }
+        options.value[i].selected = false
+    }
+}
 </script>
 
 <style scoped>

@@ -175,6 +175,10 @@ const frameworks = [
     margin-right: 0.5rem;
 }
 
+.combobox-options .combobox-options-item.selected svg {
+    opacity: 1;
+}
+
 .combobox-options .combobox-options-item svg {
     opacity: 0;
 }
