@@ -1,4 +1,5 @@
 <template>
+
 <div class="combobox" ref="combobox" v-on-click-outside="closeOptionsMenu">
     <slot>
         <ComboboxButton @click="showOptions" :placeholder="placeholderValue"/>
@@ -12,6 +13,7 @@
         />
     </slot> 
 </div>
+
 </template>
 
 <script setup lang="ts">
